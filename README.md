@@ -1,4 +1,4 @@
-Se quiere crear la funcion de crear en "terminal" y las persistencias de datos.
+Se quiere crear la funcion de crear en "terminal_autobuses" y las persistencias de datos.
 
 desde las opciones de crear en los combobox de la cabecera del programa se debe poder acceder a las opciones de crear de cada una:
 
