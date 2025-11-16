@@ -1,79 +1,60 @@
 package org.unimag.dto;
 
 public class TiqueteDto {
-    
     private int idTiquete;
-    private PasajeroDto pasajeroTiquete;
-    private ViajeDto viajeTiquete;
-    private AsientoDto asientoTiquete;
+    private int idPasajero;
+    private int idViaje;
+    private int idAsiento;
     private String nombreImagenPublicoTiquete;
-    private String nombreImagenPrivadoTiquete;
 
-    public void setIdTiquete(int idTiquete) {
+    public TiqueteDto() {
+    }
+
+    public TiqueteDto(int idTiquete, int idPasajero, int idViaje, int idAsiento, String nombreImagenPublicoTiquete) {
         this.idTiquete = idTiquete;
-    }
-
-    public void setPasajeroTiquete(PasajeroDto pasajeroTiquete) {
-        this.pasajeroTiquete = pasajeroTiquete;
-    }
-
-    public void setViajeTiquete(ViajeDto viajeTiquete) {
-        this.viajeTiquete = viajeTiquete;
-    }
-
-    public void setAsientoTiquete(AsientoDto asientoTiquete) {
-        this.asientoTiquete = asientoTiquete;
-    }
-
-    public void setNombreImagenPublicoTiquete(String nombreImagenPublicoTiquete) {
+        this.idPasajero = idPasajero;
+        this.idViaje = idViaje;
+        this.idAsiento = idAsiento;
         this.nombreImagenPublicoTiquete = nombreImagenPublicoTiquete;
-    }
-
-    public void setNombreImagenPrivadoTiquete(String nombreImagenPrivadoTiquete) {
-        this.nombreImagenPrivadoTiquete = nombreImagenPrivadoTiquete;
     }
 
     public int getIdTiquete() {
         return idTiquete;
     }
 
-    public PasajeroDto getPasajeroTiquete() {
-        return pasajeroTiquete;
+    public void setIdTiquete(int idTiquete) {
+        this.idTiquete = idTiquete;
     }
 
-    public ViajeDto getViajeTiquete() {
-        return viajeTiquete;
+    public int getIdPasajero() {
+        return idPasajero;
     }
 
-    public AsientoDto getAsientoTiquete() {
-        return asientoTiquete;
+    public void setIdPasajero(int idPasajero) {
+        this.idPasajero = idPasajero;
+    }
+
+    public int getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
+    }
+
+    public int getIdAsiento() {
+        return idAsiento;
+    }
+
+    public void setIdAsiento(int idAsiento) {
+        this.idAsiento = idAsiento;
     }
 
     public String getNombreImagenPublicoTiquete() {
         return nombreImagenPublicoTiquete;
     }
 
-    public String getNombreImagenPrivadoTiquete() {
-        return nombreImagenPrivadoTiquete;
-    }
-
-    public TiqueteDto() {
-    }
-
-    public TiqueteDto(int idTiquete, PasajeroDto pasajeroTiquete, ViajeDto viajeTiquete, AsientoDto asientoTiquete, String nombreImagenPublicoTiquete, String nombreImagenPrivadoTiquete) {
-        this.idTiquete = idTiquete;
-        this.pasajeroTiquete = pasajeroTiquete;
-        this.viajeTiquete = viajeTiquete;
-        this.asientoTiquete = asientoTiquete;
+    public void setNombreImagenPublicoTiquete(String nombreImagenPublicoTiquete) {
         this.nombreImagenPublicoTiquete = nombreImagenPublicoTiquete;
-        this.nombreImagenPrivadoTiquete = nombreImagenPrivadoTiquete;
     }
-
-    @Override
-    public String toString() {
-        return "Tiquete: " + "ID=" + idTiquete;
-    }
-    
-    
-    
 }

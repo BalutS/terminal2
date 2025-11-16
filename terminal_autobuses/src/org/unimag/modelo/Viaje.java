@@ -1,145 +1,90 @@
 package org.unimag.modelo;
 
 public class Viaje {
-
     private int idViaje;
-    private Ruta rutaViaje;
-    private Conductor conductorViaje;
-    private Bus busViaje;
+    private int idRuta;
+    private int idConductor;
+    private int idBus;
     private String fechaViaje;
-    private int horaViaje;
+    private String horaViaje;
     private String nombreImagenPublicoViaje;
     private String nombreImagenPrivadoViaje;
-
-    /**
-     * @return the idViaje
-     */
-    public int getIdViaje() {
-        return idViaje;
-    }
-
-    /**
-     * @param idViaje the idViaje to set
-     */
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
-    }
-
-    /**
-     * @return the rutaViaje
-     */
-    public Ruta getRutaViaje() {
-        return rutaViaje;
-    }
-
-    /**
-     * @param rutaViaje the rutaViaje to set
-     */
-    public void setRutaViaje(Ruta rutaViaje) {
-        this.rutaViaje = rutaViaje;
-    }
-
-    /**
-     * @return the conductorViaje
-     */
-    public Conductor getConductorViaje() {
-        return conductorViaje;
-    }
-
-    /**
-     * @param conductorViaje the conductorViaje to set
-     */
-    public void setConductorViaje(Conductor conductorViaje) {
-        this.conductorViaje = conductorViaje;
-    }
-
-    /**
-     * @return the busViaje
-     */
-    public Bus getBusViaje() {
-        return busViaje;
-    }
-
-    /**
-     * @param busViaje the busViaje to set
-     */
-    public void setBusViaje(Bus busViaje) {
-        this.busViaje = busViaje;
-    }
-
-    /**
-     * @return the fechaViaje
-     */
-    public String getFechaViaje() {
-        return fechaViaje;
-    }
-
-    /**
-     * @param fechaViaje the fechaViaje to set
-     */
-    public void setFechaViaje(String fechaViaje) {
-        this.fechaViaje = fechaViaje;
-    }
-
-    /**
-     * @return the horaViaje
-     */
-    public int getHoraViaje() {
-        return horaViaje;
-    }
-
-    /**
-     * @param horaViaje the horaViaje to set
-     */
-    public void setHoraViaje(int horaViaje) {
-        this.horaViaje = horaViaje;
-    }
-
-    /**
-     * @return the nombreImagenPublicoViaje
-     */
-    public String getNombreImagenPublicoViaje() {
-        return nombreImagenPublicoViaje;
-    }
-
-    /**
-     * @param nombreImagenPublicoViaje the nombreImagenPublicoViaje to set
-     */
-    public void setNombreImagenPublicoViaje(String nombreImagenPublicoViaje) {
-        this.nombreImagenPublicoViaje = nombreImagenPublicoViaje;
-    }
-
-    /**
-     * @return the nombreImagenPrivadoViaje
-     */
-    public String getNombreImagenPrivadoViaje() {
-        return nombreImagenPrivadoViaje;
-    }
-
-    /**
-     * @param nombreImagenPrivadoViaje the nombreImagenPrivadoViaje to set
-     */
-    public void setNombreImagenPrivadoViaje(String nombreImagenPrivadoViaje) {
-        this.nombreImagenPrivadoViaje = nombreImagenPrivadoViaje;
-    }
-
-    public Viaje(int idViaje, Ruta rutaViaje, Conductor conductorViaje, Bus busViaje, String fechaViaje, int horaViaje, String nombreImagenPublicoViaje, String nombreImagenPrivadoViaje) {
-        this.idViaje = idViaje;
-        this.rutaViaje = rutaViaje;
-        this.conductorViaje = conductorViaje;
-        this.busViaje = busViaje;
-        this.fechaViaje = fechaViaje;
-        this.horaViaje = horaViaje;
-        this.nombreImagenPublicoViaje = nombreImagenPublicoViaje;
-        this.nombreImagenPrivadoViaje = nombreImagenPrivadoViaje;
-    }
 
     public Viaje() {
     }
 
-    @Override
-    public String toString() {
-        return "Viaje{" + "idViaje=" + idViaje + ", rutaViaje=" + rutaViaje + ", conductorViaje=" + conductorViaje + ", busViaje=" + busViaje + ", fechaViaje=" + fechaViaje + ", horaViaje=" + horaViaje + ", nombreImagenPublicoViaje=" + nombreImagenPublicoViaje + ", nombreImagenPrivadoViaje=" + nombreImagenPrivadoViaje + '}';
+    public Viaje(int idViaje, int idRuta, int idConductor, int idBus, String fechaViaje, String horaViaje, String nombreImagenPublicoViaje, String nombreImagenPrivadoViaje) {
+        this.idViaje = idViaje;
+        this.idRuta = idRuta;
+        this.idConductor = idConductor;
+        this.idBus = idBus;
+        this.fechaViaje = fechaViaje;
+        this.horaViaje = horaViaje;
+        this.nombreImagenPublicoViaje = nombreImagenPublicoViaje;
+        this.nombreImagenPrivadoViaje = nombreImagenPrivadoViaje;
     }
 
+    public int getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
+    }
+
+    public int getIdRuta() {
+        return idRuta;
+    }
+
+    public void setIdRuta(int idRuta) {
+        this.idRuta = idRuta;
+    }
+
+    public int getIdConductor() {
+        return idConductor;
+    }
+
+    public void setIdConductor(int idConductor) {
+        this.idConductor = idConductor;
+    }
+
+    public int getIdBus() {
+        return idBus;
+    }
+
+    public void setIdBus(int idBus) {
+        this.idBus = idBus;
+    }
+
+    public String getFechaViaje() {
+        return fechaViaje;
+    }
+
+    public void setFechaViaje(String fechaViaje) {
+        this.fechaViaje = fechaViaje;
+    }
+
+    public String getHoraViaje() {
+        return horaViaje;
+    }
+
+    public void setHoraViaje(String horaViaje) {
+        this.horaViaje = horaViaje;
+    }
+
+    public String getNombreImagenPublicoViaje() {
+        return nombreImagenPublicoViaje;
+    }
+
+    public void setNombreImagenPublicoViaje(String nombreImagenPublicoViaje) {
+        this.nombreImagenPublicoViaje = nombreImagenPublicoViaje;
+    }
+
+    public String getNombreImagenPrivadoViaje() {
+        return nombreImagenPrivadoViaje;
+    }
+
+    public void setNombreImagenPrivadoViaje(String nombreImagenPrivadoViaje) {
+        this.nombreImagenPrivadoViaje = nombreImagenPrivadoViaje;
+    }
 }

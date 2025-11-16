@@ -1,77 +1,60 @@
 package org.unimag.dto;
 
 public class RutaDto {
-    
     private int idRuta;
-    private String ciudadOrigenRuta;
-    private String ciudadDestinoRuta;
-    private Double tarifaRuta;
+    private String ciudadOrigen;
+    private String ciudadDestino;
+    private double tarifa;
     private String nombreImagenPublicoRuta;
-    private String nombreImagenPrivadoRuta;
 
-    public void setIdRuta(int idRuta) {
+    public RutaDto() {
+    }
+
+    public RutaDto(int idRuta, String ciudadOrigen, String ciudadDestino, double tarifa, String nombreImagenPublicoRuta) {
         this.idRuta = idRuta;
-    }
-
-    public void setCiudadOrigenRuta(String ciudadOrigenRuta) {
-        this.ciudadOrigenRuta = ciudadOrigenRuta;
-    }
-
-    public void setCiudadDestinoRuta(String ciudadDestinoRuta) {
-        this.ciudadDestinoRuta = ciudadDestinoRuta;
-    }
-
-    public void setTarifaRuta(Double tarifaRuta) {
-        this.tarifaRuta = tarifaRuta;
-    }
-
-    public void setNombreImagenPublicoRuta(String nombreImagenPublicoRuta) {
+        this.ciudadOrigen = ciudadOrigen;
+        this.ciudadDestino = ciudadDestino;
+        this.tarifa = tarifa;
         this.nombreImagenPublicoRuta = nombreImagenPublicoRuta;
-    }
-
-    public void setNombreImagenPrivadoRuta(String nombreImagenPrivadoRuta) {
-        this.nombreImagenPrivadoRuta = nombreImagenPrivadoRuta;
     }
 
     public int getIdRuta() {
         return idRuta;
     }
 
-    public String getCiudadOrigenRuta() {
-        return ciudadOrigenRuta;
+    public void setIdRuta(int idRuta) {
+        this.idRuta = idRuta;
     }
 
-    public String getCiudadDestinoRuta() {
-        return ciudadDestinoRuta;
+    public String getCiudadOrigen() {
+        return ciudadOrigen;
     }
 
-    public Double getTarifaRuta() {
-        return tarifaRuta;
+    public void setCiudadOrigen(String ciudadOrigen) {
+        this.ciudadOrigen = ciudadOrigen;
+    }
+
+    public String getCiudadDestino() {
+        return ciudadDestino;
+    }
+
+    public void setCiudadDestino(String ciudadDestino) {
+        this.ciudadDestino = ciudadDestino;
+    }
+
+    public double getTarifa() {
+        return tarifa;
+    }
+
+    public void setTarifa(double tarifa) {
+        this.tarifa = tarifa;
     }
 
     public String getNombreImagenPublicoRuta() {
         return nombreImagenPublicoRuta;
     }
 
-    public String getNombreImagenPrivadoRuta() {
-        return nombreImagenPrivadoRuta;
-    }
-
-    public RutaDto() {
-    }
-
-    public RutaDto(int idRuta, String ciudadOrigenRuta, String ciudadDestinoRuta, Double tarifaRuta, String nombreImagenPublicoRuta, String nombreImagenPrivadoRuta) {
-        this.idRuta = idRuta;
-        this.ciudadOrigenRuta = ciudadOrigenRuta;
-        this.ciudadDestinoRuta = ciudadDestinoRuta;
-        this.tarifaRuta = tarifaRuta;
+    public void setNombreImagenPublicoRuta(String nombreImagenPublicoRuta) {
         this.nombreImagenPublicoRuta = nombreImagenPublicoRuta;
-        this.nombreImagenPrivadoRuta = nombreImagenPrivadoRuta;
     }
-
-    @Override
-    public String toString() {
-        return "Ruta:" + "ID=" + idRuta ;
-    }
-    
 }

@@ -6,6 +6,7 @@ import javafx.stage.FileChooser;
 import org.unimag.recurso.constante.Persistencia;
 
 public class Formulario {
+
     public static FileChooser selectorImagen(String tituloVentana, String tituloFiltros, String[] extensiones) {
         File rutaInicial = new File(System.getProperty("user.home"));
         if (!rutaInicial.exists()) {

@@ -8,6 +8,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Marco {
+
     public static Rectangle crear(
             Stage miEscenario,
             double porcentajeAlto,
@@ -30,4 +31,5 @@ public class Marco {
 
         return marco;
     }
+
 }

@@ -79,7 +79,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoAsiento.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Asientos"), new MenuItem("Listar Asientos"), new MenuItem("Administrar Asientos"), new MenuItem("Carrusel Asientos"));
+        MenuItem opcion1 = new MenuItem("Crear Asiento");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.AsientoVistasControlador.crearAsiento(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Asientos"), new MenuItem("Administrar Asientos"), new MenuItem("Carrusel Asientos"));
         agregarMenu(menuButton);
     }
 
@@ -88,7 +95,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoBus.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Buses"), new MenuItem("Listar Buses"), new MenuItem("Administrar Buses"), new MenuItem("Carrusel Buses"));
+        MenuItem opcion1 = new MenuItem("Crear Bus");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.BusVistasControlador.crearBus(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Buses"), new MenuItem("Administrar Buses"), new MenuItem("Carrusel Buses"));
         agregarMenu(menuButton);
     }
 
@@ -97,7 +111,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoConductor.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Conductores"), new MenuItem("Listar Conductores"), new MenuItem("Administrar Conductores"), new MenuItem("Carrusel Conductores"));
+        MenuItem opcion1 = new MenuItem("Crear Conductor");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.ConductorVistasControlador.crearConductor(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Conductores"), new MenuItem("Administrar Conductores"), new MenuItem("Carrusel Conductores"));
         agregarMenu(menuButton);
     }
 
@@ -106,7 +127,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoEmpresa.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Empresas"), new MenuItem("Listar Empresas"), new MenuItem("Administrar Empresas"), new MenuItem("Carrusel Empresas"));
+        MenuItem opcion1 = new MenuItem("Crear Empresa");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.EmpresaVistasControlador.crearEmpresa(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Empresas"), new MenuItem("Administrar Empresas"), new MenuItem("Carrusel Empresas"));
         agregarMenu(menuButton);
     }
 
@@ -115,7 +143,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoEquipaje.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Equipajes"), new MenuItem("Listar Equipajes"), new MenuItem("Administrar Equipajes"), new MenuItem("Carrusel Equipajes"));
+        MenuItem opcion1 = new MenuItem("Crear Equipaje");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.EquipajeVistasControlador.crearEquipaje(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Equipajes"), new MenuItem("Administrar Equipajes"), new MenuItem("Carrusel Equipajes"));
         agregarMenu(menuButton);
     }
 
@@ -124,7 +159,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoPasajero.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Pasajeros"), new MenuItem("Listar Pasajeros"), new MenuItem("Administrar Pasajeros"), new MenuItem("Carrusel Pasajeros"));
+        MenuItem opcion1 = new MenuItem("Crear Pasajero");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.PasajeroVistasControlador.crearPasajero(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Pasajeros"), new MenuItem("Administrar Pasajeros"), new MenuItem("Carrusel Pasajeros"));
         agregarMenu(menuButton);
     }
 
@@ -133,7 +175,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoRuta.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Rutas"), new MenuItem("Listar Rutas"), new MenuItem("Administrar Rutas"), new MenuItem("Carrusel Rutas"));
+        MenuItem opcion1 = new MenuItem("Crear Ruta");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.RutaVistasControlador.crearRuta(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Rutas"), new MenuItem("Administrar Rutas"), new MenuItem("Carrusel Rutas"));
         agregarMenu(menuButton);
     }
 
@@ -142,7 +191,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoTiquete.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Tiquetes"), new MenuItem("Listar Tiquetes"), new MenuItem("Administrar Tiquetes"), new MenuItem("Carrusel Tiquetes"));
+        MenuItem opcion1 = new MenuItem("Crear Tiquete");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.TiqueteVistasControlador.crearTiquete(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Tiquetes"), new MenuItem("Administrar Tiquetes"), new MenuItem("Carrusel Tiquetes"));
         agregarMenu(menuButton);
     }
 
@@ -151,7 +207,14 @@ public class VistaCabecera extends SubScene {
         menuButton.setPrefWidth(menuAncho);
         menuButton.setPrefHeight(menuAlto);
         menuButton.setGraphic(Icono.obtenerIcono("IconoViaje.png", 25));
-        menuButton.getItems().addAll(new MenuItem("Crear Viajes"), new MenuItem("Listar Viajes"), new MenuItem("Administrar Viajes"), new MenuItem("Carrusel Viajes"));
+        MenuItem opcion1 = new MenuItem("Crear Viaje");
+        opcion1.setOnAction((e) -> {
+            miPanelPrincipal.setCenter(
+                    org.unimag.controlador.ViajeVistasControlador.crearViaje(miEscenario,
+                            Configuracion.ANCHO_APP, Configuracion.ALTO_CABECERA)
+            );
+        });
+        menuButton.getItems().addAll(opcion1, new MenuItem("Listar Viajes"), new MenuItem("Administrar Viajes"), new MenuItem("Carrusel Viajes"));
         agregarMenu(menuButton);
     }
 

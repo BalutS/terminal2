@@ -1,111 +1,80 @@
-
 package org.unimag.modelo;
 
 public class Pasajero {
-    private int cedulaPasajero;
+    private int idPasajero;
+    private String cedulaPasajero;
     private String nombrePasajero;
-    private Short edadPasajero;
-    private Boolean generoPasajero;
+    private int edadPasajero;
+    private boolean generoPasajero;
     private String nombreImagenPublicoPasajero;
     private String nombreImagenPrivadoPasajero;
-
-    /**
-     * @return the cedulaPasajero
-     */
-    public int getCedulaPasajero() {
-        return cedulaPasajero;
-    }
-
-    /**
-     * @param cedulaPasajero the cedulaPasajero to set
-     */
-    public void setCedulaPasajero(int cedulaPasajero) {
-        this.cedulaPasajero = cedulaPasajero;
-    }
-
-    /**
-     * @return the nombrePasajero
-     */
-    public String getNombrePasajero() {
-        return nombrePasajero;
-    }
-
-    /**
-     * @param nombrePasajero the nombrePasajero to set
-     */
-    public void setNombrePasajero(String nombrePasajero) {
-        this.nombrePasajero = nombrePasajero;
-    }
-
-    /**
-     * @return the edadPasajero
-     */
-    public Short getEdadPasajero() {
-        return edadPasajero;
-    }
-
-    /**
-     * @param edadPasajero the edadPasajero to set
-     */
-    public void setEdadPasajero(Short edadPasajero) {
-        this.edadPasajero = edadPasajero;
-    }
-
-    /**
-     * @return the nombreImagenPublicoPasajero
-     */
-    public String getNombreImagenPublicoPasajero() {
-        return nombreImagenPublicoPasajero;
-    }
-
-    /**
-     * @param nombreImagenPublicoPasajero the nombreImagenPublicoPasajero to set
-     */
-    public void setNombreImagenPublicoPasajero(String nombreImagenPublicoPasajero) {
-        this.nombreImagenPublicoPasajero = nombreImagenPublicoPasajero;
-    }
-
-    /**
-     * @return the nombreImagenPrivadoPasajero
-     */
-    public String getNombreImagenPrivadoPasajero() {
-        return nombreImagenPrivadoPasajero;
-    }
-
-    /**
-     * @param nombreImagenPrivadoPasajero the nombreImagenPrivadoPasajero to set
-     */
-    public void setNombreImagenPrivadoPasajero(String nombreImagenPrivadoPasajero) {
-        this.nombreImagenPrivadoPasajero = nombreImagenPrivadoPasajero;
-    }
-
-    public Boolean getGeneroPasajero() {
-        return generoPasajero;
-    }
-
-    public void setGeneroPasajero(Boolean generoPasajero) {
-        this.generoPasajero = generoPasajero;
-    }
-
-    public Pasajero(int cedulaPasajero, String nombrePasajero, Short edadPasajero, Boolean generoPasajero, String nombreImagenPublicoPasajero, String nombreImagenPrivadoPasajero) {
-        this.cedulaPasajero = cedulaPasajero;
-        this.nombrePasajero = nombrePasajero;
-        this.edadPasajero = edadPasajero;
-        this.generoPasajero = generoPasajero;
-        this.nombreImagenPublicoPasajero = nombreImagenPublicoPasajero;
-        this.nombreImagenPrivadoPasajero = nombreImagenPrivadoPasajero;
-    }
-
-    
 
     public Pasajero() {
     }
 
-    @Override
-    public String toString() {
-        return "Pasajero{" + "cedulaPasajero=" + cedulaPasajero + ", nombrePasajero=" + nombrePasajero + ", edadPasajero=" + edadPasajero + ", generoPasajero=" + generoPasajero + ", nombreImagenPublicoPasajero=" + nombreImagenPublicoPasajero + ", nombreImagenPrivadoPasajero=" + nombreImagenPrivadoPasajero + '}';
+    public Pasajero(int idPasajero, String cedulaPasajero, String nombrePasajero, int edadPasajero, boolean generoPasajero, String nombreImagenPublicoPasajero, String nombreImagenPrivadoPasajero) {
+        this.idPasajero = idPasajero;
+        this.cedulaPasajero = cedulaPasajero;
+        this.nombrePasajero = nombrePasajero;
+        this.edadPasajero = edadPasajero;
+        this.generoPasajero = generoPasajero;
+        this.nombreImagenPublicoPasajero = nombreImagenPublicoPasajero;
+        this.nombreImagenPrivadoPasajero = nombreImagenPrivadoPasajero;
     }
 
-    
-    
+    public int getIdPasajero() {
+        return idPasajero;
+    }
+
+    public void setIdPasajero(int idPasajero) {
+        this.idPasajero = idPasajero;
+    }
+
+    public String getCedulaPasajero() {
+        return cedulaPasajero;
+    }
+
+    public void setCedulaPasajero(String cedulaPasajero) {
+        this.cedulaPasajero = cedulaPasajero;
+    }
+
+    public String getNombrePasajero() {
+        return nombrePasajero;
+    }
+
+    public void setNombrePasajero(String nombrePasajero) {
+        this.nombrePasajero = nombrePasajero;
+    }
+
+    public int getEdadPasajero() {
+        return edadPasajero;
+    }
+
+    public void setEdadPasajero(int edadPasajero) {
+        this.edadPasajero = edadPasajero;
+    }
+
+    public boolean isGeneroPasajero() {
+        return generoPasajero;
+    }
+
+    public void setGeneroPasajero(boolean generoPasajero) {
+        this.generoPasajero = generoPasajero;
+    }
+
+    public String getNombreImagenPublicoPasajero() {
+        return nombreImagenPublicoPasajero;
+    }
+
+    public void setNombreImagenPublicoPasajero(String nombreImagenPublicoPasajero) {
+        this.nombreImagenPublicoPasajero = nombreImagenPublicoPasajero;
+    }
+
+    public String getNombreImagenPrivadoPasajero() {
+        return nombreImagenPrivadoPasajero;
+    }
+
+    public void setNombreImagenPrivadoPasajero(String nombreImagenPrivadoPasajero) {
+        this.nombreImagenPrivadoPasajero = nombreImagenPrivadoPasajero;
+    }
 }
