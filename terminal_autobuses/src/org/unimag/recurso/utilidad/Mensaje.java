@@ -5,8 +5,8 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-
 public class Mensaje {
+
     private static Alert crearAlerta(
             Alert.AlertType tipo,
             Window ventanaPadre,
@@ -25,15 +25,11 @@ public class Mensaje {
 
     public static void salir(Stage miEscenario) {
 
-        Alert msg = new Alert(Alert.AlertType.CONFIRMATION);
-        msg.setTitle("Saliendo");
-        msg.initOwner(miEscenario);
-        msg.setHeaderText(null);
-        msg.getDialogPane().setGraphic(Icono.obtenerIcono("iconByeBye.png",40));
-        msg.setContentText("¿Desea cerrar la aplicacion?");
+        Alert msg = crearAlerta(Alert.AlertType.CONFIRMATION,
+                miEscenario, "AMF", "¿Deseas salir?");
 
-        if (msg.showAndWait().get() == ButtonType.OK){
-            miEscenario.close();//se usa el metodo que estaba en el controlador
+        if (msg.showAndWait().get() == ButtonType.OK) {
+            miEscenario.close();
         }
     }
 

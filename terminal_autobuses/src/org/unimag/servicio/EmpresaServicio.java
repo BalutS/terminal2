@@ -2,14 +2,17 @@ package org.unimag.servicio;
 
 import com.poo.persistence.NioFile;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.unimag.api.ApiOperacionBD;
 import org.unimag.dto.EmpresaDto;
+import org.unimag.modelo.Empresa;
 import org.unimag.recurso.constante.Persistencia;
+import org.unimag.recurso.utilidad.GestorImagen;
 
-public class EmpresaServicio implements ApiOperacionBD<EmpresaDto, Integer>{
+public class EmpresaServicio implements ApiOperacionBD<EmpresaDto, Integer> {
 
     private NioFile miArchivo;
     private String nombrePersistencia;
@@ -39,13 +42,48 @@ public class EmpresaServicio implements ApiOperacionBD<EmpresaDto, Integer>{
     }
 
     @Override
-    public EmpresaDto inserInto(EmpresaDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public EmpresaDto inserInto(EmpresaDto dto, String ruta) {
+        Empresa objEmpresa = new Empresa();
+
+        objEmpresa.setIdEmpresa(getSerial());
+        objEmpresa.setNombreEmpresa(dto.getNombreEmpresa());
+
+        objEmpresa.setNombreImagenPublicoEmpresa(dto.getNombreImagenPublicoEmpresa());
+        objEmpresa.setNombreImagenPrivadoEmpresa(GestorImagen.grabarLaImagen(ruta));
+
+        String filaGrabar = objEmpresa.getIdEmpresa() + Persistencia.SEPARADOR_COLUMNAS
+                + objEmpresa.getNombreEmpresa() + Persistencia.SEPARADOR_COLUMNAS
+                + objEmpresa.getNombreImagenPublicoEmpresa()+ Persistencia.SEPARADOR_COLUMNAS
+                + objEmpresa.getNombreImagenPrivadoEmpresa();
+
+        if (miArchivo.agregarRegistro(filaGrabar)) {
+            dto.setIdEmpresa(objEmpresa.getIdEmpresa());
+            return dto;
+        }
+
+        return null;
     }
 
     @Override
     public List<EmpresaDto> selectFrom() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<EmpresaDto> arregloEmpresa = new ArrayList<>();
+        List<String> arregloDatos = miArchivo.obtenerDatos();
+
+        for (String cadena : arregloDatos) {
+            try {
+                cadena = cadena.replace("@", "");
+                String[] columnas = cadena.split(Persistencia.SEPARADOR_COLUMNAS);
+
+                int codEmpresa = Integer.parseInt(columnas[0].trim());
+                String nomEmpresa = columnas[1].trim();
+
+                arregloEmpresa.add(new EmpresaDto(codEmpresa, nomEmpresa, ""));
+
+            } catch (NumberFormatException error) {
+                Logger.getLogger(EmpresaServicio.class.getName()).log(Level.SEVERE, null, error);
+            }
+        }
+        return arregloEmpresa;
     }
 
     @Override
@@ -62,28 +100,17 @@ public class EmpresaServicio implements ApiOperacionBD<EmpresaDto, Integer>{
 
     @Override
     public Boolean deleteFrom(Integer codigo) {
-        Boolean correcto = false;
-        try {
-            List<String> arreglo;
-
-            arreglo = miArchivo.borrarFilaPosicion(codigo);
-            if (!arreglo.isEmpty()) {
-                correcto = true;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(EmpresaServicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return correcto;
-    }
-
-    @Override
-    public EmpresaDto updateSet(Integer codigo, EmpresaDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public EmpresaDto getOne(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    @Override
+    public EmpresaDto updateSet(Integer codigo, EmpresaDto objeto, String ruta) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

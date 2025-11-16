@@ -1,69 +1,50 @@
 package org.unimag.dto;
 
 public class BusDto {
-    
     private int idBus;
     private String modeloBus;
-    private EmpresaDto empresaBus;
+    private int idEmpresa;
     private String nombreImagenPublicoBus;
-    private String nombreImagenPrivadoBus;
 
     public BusDto() {
     }
 
-    public BusDto(int idBus, String modeloBus, EmpresaDto empresaBus, String nombreImagenPublicoBus, String nombreImagenPrivadoBus) {
+    public BusDto(int idBus, String modeloBus, int idEmpresa, String nombreImagenPublicoBus) {
         this.idBus = idBus;
         this.modeloBus = modeloBus;
-        this.empresaBus = empresaBus;
+        this.idEmpresa = idEmpresa;
         this.nombreImagenPublicoBus = nombreImagenPublicoBus;
-        this.nombreImagenPrivadoBus = nombreImagenPrivadoBus;
-    }
-
-    public void setIdBus(int idBus) {
-        this.idBus = idBus;
-    }
-
-    public void setModeloBus(String modeloBus) {
-        this.modeloBus = modeloBus;
-    }
-
-    public void setEmpresaBus(EmpresaDto empresaBus) {
-        this.empresaBus = empresaBus;
-    }
-
-    public void setNombreImagenPublicoBus(String nombreImagenPublicoBus) {
-        this.nombreImagenPublicoBus = nombreImagenPublicoBus;
-    }
-
-    public void setNombreImagenPrivadoBus(String nombreImagenPrivadoBus) {
-        this.nombreImagenPrivadoBus = nombreImagenPrivadoBus;
     }
 
     public int getIdBus() {
         return idBus;
     }
 
+    public void setIdBus(int idBus) {
+        this.idBus = idBus;
+    }
+
     public String getModeloBus() {
         return modeloBus;
     }
 
-    public EmpresaDto getEmpresaBus() {
-        return empresaBus;
+    public void setModeloBus(String modeloBus) {
+        this.modeloBus = modeloBus;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getNombreImagenPublicoBus() {
         return nombreImagenPublicoBus;
     }
 
-    public String getNombreImagenPrivadoBus() {
-        return nombreImagenPrivadoBus;
+    public void setNombreImagenPublicoBus(String nombreImagenPublicoBus) {
+        this.nombreImagenPublicoBus = nombreImagenPublicoBus;
     }
-
-    @Override
-    public String toString() {
-        return "Bus:" + "\nID=" + idBus + "\nModelo=" + modeloBus + "\nEmpresa=" + empresaBus;
-    }
-    
-    
-    
 }

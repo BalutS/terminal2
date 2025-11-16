@@ -4,28 +4,26 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import java.io.InputStream;
 import org.unimag.recurso.constante.Persistencia;
 
 public class Icono {
-    public static ImageView obtenerIcono(String nombreIcono, int alto) {
-        String rutaIcono = Persistencia.NOMBRE_CARPETA_IMAGENES_INTERNAS + nombreIcono;//se usa la persistencia
-        InputStream iconoSalirStream = Icono.class.getResourceAsStream(rutaIcono);
-        if (iconoSalirStream == null) {
-            System.err.println("No se pudo encontrar el recurso: " + rutaIcono);
-            return null;
-        }
-        Image iconoBasico = new Image(iconoSalirStream);
-        ImageView iconoMostrar = new ImageView(iconoBasico);
-        if (alto != 0) {
-            iconoMostrar.setFitHeight(alto);
-        }
 
-        iconoMostrar.setPreserveRatio(true);
-        iconoMostrar.setSmooth(true);
-        return iconoMostrar;
+    public static ImageView obtenerIcono(
+            String nombreIcono, int alto
+    ) {
+        String rutaIcono = Persistencia.NOMBRE_CARPETA_IMAGENES_INTERNAS + nombreIcono;
+        // System.out.println("----> " + rutaIcono);
+        Image iconito = new Image(rutaIcono);
+        ImageView vistaIconito = new ImageView(iconito);
+
+        if (alto > 0) {
+            vistaIconito.setFitHeight(alto);
+        }
+        vistaIconito.setPreserveRatio(true);
+        vistaIconito.setSmooth(true);
+        return vistaIconito;
     }
-    
+
     public static ImageView previsualizar(String rutaImagen, int dimensionMaxima) {
         ImageView imgMostrar = null;
 
@@ -51,4 +49,5 @@ public class Icono {
 
         return imgMostrar;
     }
+
 }

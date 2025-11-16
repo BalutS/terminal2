@@ -2,14 +2,17 @@ package org.unimag.servicio;
 
 import com.poo.persistence.NioFile;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.unimag.api.ApiOperacionBD;
 import org.unimag.dto.PasajeroDto;
+import org.unimag.modelo.Pasajero;
 import org.unimag.recurso.constante.Persistencia;
+import org.unimag.recurso.utilidad.GestorImagen;
 
-public class PasajeroServicio implements ApiOperacionBD<PasajeroDto, Integer>{
+public class PasajeroServicio implements ApiOperacionBD<PasajeroDto, Integer> {
 
     private NioFile miArchivo;
     private String nombrePersistencia;
@@ -39,13 +42,57 @@ public class PasajeroServicio implements ApiOperacionBD<PasajeroDto, Integer>{
     }
 
     @Override
-    public PasajeroDto inserInto(PasajeroDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PasajeroDto inserInto(PasajeroDto dto, String ruta) {
+        Pasajero objPasajero = new Pasajero();
+
+        objPasajero.setIdPasajero(getSerial());
+        objPasajero.setCedulaPasajero(dto.getCedulaPasajero());
+        objPasajero.setNombrePasajero(dto.getNombrePasajero());
+        objPasajero.setEdadPasajero(dto.getEdadPasajero());
+        objPasajero.setGeneroPasajero(dto.isGeneroPasajero());
+
+        objPasajero.setNombreImagenPublicoPasajero(dto.getNombreImagenPublicoPasajero());
+        objPasajero.setNombreImagenPrivadoPasajero(GestorImagen.grabarLaImagen(ruta));
+
+        String filaGrabar = objPasajero.getIdPasajero() + Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.getCedulaPasajero() + Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.getNombrePasajero() + Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.getEdadPasajero() + Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.isGeneroPasajero() + Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.getNombreImagenPublicoPasajero()+ Persistencia.SEPARADOR_COLUMNAS
+                + objPasajero.getNombreImagenPrivadoPasajero();
+
+        if (miArchivo.agregarRegistro(filaGrabar)) {
+            dto.setIdPasajero(objPasajero.getIdPasajero());
+            return dto;
+        }
+
+        return null;
     }
 
     @Override
     public List<PasajeroDto> selectFrom() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<PasajeroDto> arregloPasajero = new ArrayList<>();
+        List<String> arregloDatos = miArchivo.obtenerDatos();
+
+        for (String cadena : arregloDatos) {
+            try {
+                cadena = cadena.replace("@", "");
+                String[] columnas = cadena.split(Persistencia.SEPARADOR_COLUMNAS);
+
+                int idPasajero = Integer.parseInt(columnas[0].trim());
+                String cedulaPasajero = columnas[1].trim();
+                String nombrePasajero = columnas[2].trim();
+                int edadPasajero = Integer.parseInt(columnas[3].trim());
+                boolean generoPasajero = Boolean.parseBoolean(columnas[4].trim());
+
+                arregloPasajero.add(new PasajeroDto(idPasajero, cedulaPasajero, nombrePasajero, edadPasajero, generoPasajero, ""));
+
+            } catch (NumberFormatException error) {
+                Logger.getLogger(PasajeroServicio.class.getName()).log(Level.SEVERE, null, error);
+            }
+        }
+        return arregloPasajero;
     }
 
     @Override
@@ -59,30 +106,20 @@ public class PasajeroServicio implements ApiOperacionBD<PasajeroDto, Integer>{
         }
         return cantidad;
     }
+
     @Override
     public Boolean deleteFrom(Integer codigo) {
-        Boolean correcto = false;
-        try {
-            List<String> arreglo;
-
-            arreglo = miArchivo.borrarFilaPosicion(codigo);
-            if (!arreglo.isEmpty()) {
-                correcto = true;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(PasajeroServicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return correcto;
-    }
-
-    @Override
-    public PasajeroDto updateSet(Integer codigo, PasajeroDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public PasajeroDto getOne(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    @Override
+    public PasajeroDto updateSet(Integer codigo, PasajeroDto objeto, String ruta) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

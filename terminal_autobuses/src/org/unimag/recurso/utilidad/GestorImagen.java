@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import org.unimag.recurso.constante.Persistencia;
 
 public class GestorImagen {
+
     public static boolean esUnaImagen(Path miArchivo) {
         boolean correcto = false;
         try {

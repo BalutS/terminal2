@@ -2,14 +2,17 @@ package org.unimag.servicio;
 
 import com.poo.persistence.NioFile;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.unimag.api.ApiOperacionBD;
 import org.unimag.dto.AsientoDto;
+import org.unimag.modelo.Asiento;
 import org.unimag.recurso.constante.Persistencia;
+import org.unimag.recurso.utilidad.GestorImagen;
 
-public class AsientoServicio implements ApiOperacionBD<AsientoDto, Integer>{
+public class AsientoServicio implements ApiOperacionBD<AsientoDto, Integer> {
 
     private NioFile miArchivo;
     private String nombrePersistencia;
@@ -39,13 +42,51 @@ public class AsientoServicio implements ApiOperacionBD<AsientoDto, Integer>{
     }
 
     @Override
-    public AsientoDto inserInto(AsientoDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public AsientoDto inserInto(AsientoDto dto, String ruta) {
+        Asiento objAsiento = new Asiento();
+
+        objAsiento.setIdAsiento(getSerial());
+        objAsiento.setIdBus(dto.getIdBus());
+        objAsiento.setEstadoAsiento(dto.isEstadoAsiento());
+
+        objAsiento.setNombreImagenPublicoAsiento(dto.getNombreImagenPublicoAsiento());
+        objAsiento.setNombreImagenPrivadoAsiento(GestorImagen.grabarLaImagen(ruta));
+
+        String filaGrabar = objAsiento.getIdAsiento() + Persistencia.SEPARADOR_COLUMNAS
+                + objAsiento.getIdBus() + Persistencia.SEPARADOR_COLUMNAS
+                + objAsiento.isEstadoAsiento() + Persistencia.SEPARADOR_COLUMNAS
+                + objAsiento.getNombreImagenPublicoAsiento()+ Persistencia.SEPARADOR_COLUMNAS
+                + objAsiento.getNombreImagenPrivadoAsiento();
+
+        if (miArchivo.agregarRegistro(filaGrabar)) {
+            dto.setIdAsiento(objAsiento.getIdAsiento());
+            return dto;
+        }
+
+        return null;
     }
 
     @Override
     public List<AsientoDto> selectFrom() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<AsientoDto> arregloAsiento = new ArrayList<>();
+        List<String> arregloDatos = miArchivo.obtenerDatos();
+
+        for (String cadena : arregloDatos) {
+            try {
+                cadena = cadena.replace("@", "");
+                String[] columnas = cadena.split(Persistencia.SEPARADOR_COLUMNAS);
+
+                int idAsiento = Integer.parseInt(columnas[0].trim());
+                int idBus = Integer.parseInt(columnas[1].trim());
+                boolean estadoAsiento = Boolean.parseBoolean(columnas[2].trim());
+
+                arregloAsiento.add(new AsientoDto(idAsiento, idBus, estadoAsiento, ""));
+
+            } catch (NumberFormatException error) {
+                Logger.getLogger(AsientoServicio.class.getName()).log(Level.SEVERE, null, error);
+            }
+        }
+        return arregloAsiento;
     }
 
     @Override
@@ -62,28 +103,17 @@ public class AsientoServicio implements ApiOperacionBD<AsientoDto, Integer>{
 
     @Override
     public Boolean deleteFrom(Integer codigo) {
-        Boolean correcto = false;
-        try {
-            List<String> arreglo;
-
-            arreglo = miArchivo.borrarFilaPosicion(codigo);
-            if (!arreglo.isEmpty()) {
-                correcto = true;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(AsientoServicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return correcto;
-    }
-
-    @Override
-    public AsientoDto updateSet(Integer codigo, AsientoDto objeto, String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public AsientoDto getOne(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    @Override
+    public AsientoDto updateSet(Integer codigo, AsientoDto objeto, String ruta) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }
